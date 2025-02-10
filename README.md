@@ -1,1 +1,1 @@
-# mi primer repo por consola
+# MI PRIMER repoSITORIO por consola
