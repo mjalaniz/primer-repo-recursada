@@ -1,10 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import SuperheroesDataSource from 'SuperheroesDataSource';
+import SuperheroesDataSource from './superheroesDataSource.mjs';
+//import Superheroe from '../models/superheroe.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+//const filePath = path.join(__dirname, '../superheroes.txt');
+
 
 export default class SuperheroesFileRepository extends SuperheroesDataSource{
     constructor(){

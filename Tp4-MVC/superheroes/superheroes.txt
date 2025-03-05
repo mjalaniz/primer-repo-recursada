@@ -48,7 +48,7 @@
     "nombreReal": "Thor Odison",
     "nombreSociedad": "Dios del trueno",
     "edad": 1000,
-    "planetaOrigen": "Asgard",
+    "planetaOrigen": "Tierra",
     "debilidad": "Destruir su martillo",
     "poder": [
       "Controlar el trueno",

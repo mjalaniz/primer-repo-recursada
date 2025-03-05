@@ -18,7 +18,13 @@ export function buscarSuperheroePorAtributoController(req,res){
 
 
     if (superheroes.length > 0) {
-
-
+        res.send(renderizarListaSuperheroes(superheroes));
+    }else{
+        res.status(404).send({mensaje: "No se encontraron Superheroes con ese atributo"});
     }
+}
+
+export function obtenerSuperheroesMayoresDe30Controller(req,res){
+    const superheroes = obtenerSuperheroesMayoresDe30();
+    res.send(renderizarListaSuperheroes(superheroes));
 }
