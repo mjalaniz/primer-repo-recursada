@@ -1,35 +1,57 @@
 
-import { obtenerSuperheroePorId, obtenerTodosLosSuperheroes, buscarSuperheroesPorAtributo, obtenerSuperheroesMayoresDe30 } from '../services/superheroesService.mjs';
+import { obtenerTodosLosSuperheroes, obtenerSuperheroePorId, buscarSuperheroesPorAtributo, obtenerSuperheroesMayoresDe30 } from '../services/superheroesService.mjs';
 import { renderizarSuperheroe, renderizarListaSuperheroes } from '../views/responseView.mjs';
 
-export function obtenerSuperheroePorIdController(req, res){
-try{    
-    const { id } = req.params;
-    const superheroe = obtenerSuperheroePorId(parseInt(id));
+import {isObjectIdOrHexString} from 'mongoose';
 
-    if(!superheroe){
-        res.status(404).send({mensaje: "Superheroe no encontrado"});
-    }
+export async function obtenerSuperheroePorIdController(req, res){
+    try{    
+        const { id } = req.params;
+        const esHexadecimal = isObjectIdOrHexString(id)? true : false;
+
+        //const superheroe = await obtenerSuperheroePorId(parseInt(id));
+        if (esHexadecimal) {
+            const superheroe = await obtenerSuperheroePorId(id);
     
-    const superheroeFormateado = renderizarSuperheroe(superheroe);
-    res.status(200).json(superheroeFormateado);
-    } catch (error){
+            if(superheroe){
+                const superheroeFormateado = renderizarSuperheroe(superheroe);
+                res.status(200).json(superheroeFormateado);
+                //res.send(renderizarSuperheroe(superheroe));
+            }else{
+                res.status(404).send({mensaje: 'Super heroe no encontrado'});
+            }
+        }else{
+             res.status(404).send({mensaje: 'Valor ingresado inválido'});
+        }
+
+
+        /*if(!superheroe){
+            res.status(404).send({mensaje: "Superheroe no encontrado"});
+        }
+        
+        const superheroeFormateado = renderizarSuperheroe(superheroe);
+        res.status(200).json(superheroeFormateado);
+        } catch (error){
+            res.status(500).send({mensaje: "Error al obtener el superheroe", error:error.message});
+        }*/
+    }
+    catch (error){
         res.status(500).send({mensaje: "Error al obtener el superheroe", error:error.message});
     }
 }
 
-
 export async function obtenerTodosSuperheroesController(req, res){
-   try{
-    
-    const superheroes = await obtenerTodosLosSuperheroes();
-    const superheroesFormateados = renderizarListaSuperheroes(superheroes);
-    res.status(200).json(superheroesFormateados);
-
-   } catch (error) {
-        res.status(500).send({mensaje: 'Error al obtener los superheroes',error:error.message});
-   }
-}
+    try{
+     
+     const superheroes = await obtenerTodosLosSuperheroes();
+     const superheroesFormateados = renderizarListaSuperheroes(superheroes);
+     res.status(200).json(superheroesFormateados);
+ 
+    } catch (error) {
+         res.status(500).send({mensaje: 'Error al obtener los superheroes',error:error.message});
+    }
+ }
+ 
 
 export async function buscarSuperheroesPorAtributoController(req, res){
     try{

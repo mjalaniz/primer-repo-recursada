@@ -10,8 +10,9 @@ import{
 const router = express.Router();
 
 router.get('/heroes', obtenerTodosSuperheroesController);
+router.get('/heroes/mayores-de-30', obtenerSuperheroesMayoresDe30Controller);
 router.get('/heroes/:id', obtenerSuperheroePorIdController);
 router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroesPorAtributoController);
-router.get('/heroes/mayores-de-30', obtenerSuperheroesMayoresDe30Controller);
+
 
 export default router;

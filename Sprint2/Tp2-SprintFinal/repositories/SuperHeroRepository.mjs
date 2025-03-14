@@ -2,6 +2,7 @@ import SuperHero from '../models/SuperHero.mjs';
 import IRepository from './IRepository.mjs';
 
 class SuperHeroRepository extends IRepository {
+    
     async obtenerPorId(id){
         return await SuperHero.findById(id);
     }
@@ -9,14 +10,15 @@ class SuperHeroRepository extends IRepository {
     async obtenerTodos() {
         return await SuperHero.find({});
     }
-
+       
     async buscarPorAtributo(atributo, valor) {
-        const query = {[atributo]: new RegExp(valor, 'i')};
-        return await SuperHero.find(query);
+        //const query = {[atributo]: new RegExp(valor, 'i')};
+        return await SuperHero.find({[atributo]: valor});
+        //return await SuperHero.find(query);
     }
 
     async obtenerMayoresDe30(){
-        return await SuperHero.find({edad: {$gt:30}, planetaOrigen: 'Tierra', poderes:{$size: {$gt:2}}});
+        return await SuperHero.find({edad: {$gt:30}});
     }
 }
 

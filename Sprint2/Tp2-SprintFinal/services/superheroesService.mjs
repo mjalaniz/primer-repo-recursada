@@ -7,7 +7,7 @@ import SuperHeroRepository from '../repositories/SuperHeroRepository.mjs';
 //const repository = new SuperheroesRepository();
 
 export async function obtenerSuperheroePorId(id){
-    return await SuperHeroRepository.obtenerPorId();
+    return await SuperHeroRepository.obtenerPorId(id);
     //const superheroes = repository.obtenerTodos(); 
 //    return superheroes.find(hero => hero.id === id);
 }
@@ -15,6 +15,7 @@ export async function obtenerSuperheroePorId(id){
 export async function obtenerTodosLosSuperheroes(){
     return await SuperHeroRepository.obtenerTodos();
 }
+
 
 export async function buscarSuperheroesPorAtributo(atributo, valor){
     return await SuperHeroRepository.buscarPorAtributo(atributo,valor);
