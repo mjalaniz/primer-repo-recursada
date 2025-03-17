@@ -2,41 +2,16 @@
 import { obtenerTodosLosSuperheroes, obtenerSuperheroePorId, buscarSuperheroesPorAtributo, obtenerSuperheroesMayoresDe30 } from '../services/superheroesService.mjs';
 import { renderizarSuperheroe, renderizarListaSuperheroes } from '../views/responseView.mjs';
 
-import {isObjectIdOrHexString} from 'mongoose';
-
+//configuro controlador para gestionar solicitudes HTTP
 export async function obtenerSuperheroePorIdController(req, res){
-    try{    
-        const { id } = req.params;
-        const esHexadecimal = isObjectIdOrHexString(id)? true : false;
-
-        //const superheroe = await obtenerSuperheroePorId(parseInt(id));
-        if (esHexadecimal) {
-            const superheroe = await obtenerSuperheroePorId(id);
+    const { id } = req.params;
+    const superheroe = await obtenerSuperheroePorId(id);
     
-            if(superheroe){
-                const superheroeFormateado = renderizarSuperheroe(superheroe);
-                res.status(200).json(superheroeFormateado);
-                //res.send(renderizarSuperheroe(superheroe));
-            }else{
-                res.status(404).send({mensaje: 'Super heroe no encontrado'});
-            }
-        }else{
-             res.status(404).send({mensaje: 'Valor ingresado inválido'});
-        }
-
-
-        /*if(!superheroe){
-            res.status(404).send({mensaje: "Superheroe no encontrado"});
-        }
-        
-        const superheroeFormateado = renderizarSuperheroe(superheroe);
-        res.status(200).json(superheroeFormateado);
-        } catch (error){
-            res.status(500).send({mensaje: "Error al obtener el superheroe", error:error.message});
-        }*/
+    if(superheroe){
+        res.send(renderizarSuperheroe(superheroe));
     }
-    catch (error){
-        res.status(500).send({mensaje: "Error al obtener el superheroe", error:error.message});
+    else{
+        res.status(404).send({mensaje: "Superheroe no encontrado"});
     }
 }
 

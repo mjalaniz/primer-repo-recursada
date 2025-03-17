@@ -1,15 +1,9 @@
-// service/superheroesService.mj
-//import superHero from '../models/SuperHero.mjs';
-//import SuperheroesRepository from '../repository/superheroesRepository.mjs';
+
 import SuperHeroRepository from '../repositories/SuperHeroRepository.mjs';
 
-//instancia el repositorio para meejar las tareas
-//const repository = new SuperheroesRepository();
-
-export async function obtenerSuperheroePorId(id){
-    return await SuperHeroRepository.obtenerPorId(id);
-    //const superheroes = repository.obtenerTodos(); 
-//    return superheroes.find(hero => hero.id === id);
+//se configura la logica del negocio,usando los metodos del repositorio.
+export async function obtenerSuperheroePorId($id){
+    return await SuperHeroRepository.obtenerPorId($id);
 }
 
 export async function obtenerTodosLosSuperheroes(){
@@ -25,8 +19,4 @@ export async function obtenerSuperheroesMayoresDe30(){
     
     return await SuperHeroRepository.obtenerMayoresDe30();
     
-    /*const superheroes = repository.obtenerTodos();
-    return superheroes.filter(hero =>
-        hero.edad > 30 && hero.planetaOrigen == 'Tierra' && hero.poder.length >=2
-    );*/
 }

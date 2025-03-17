@@ -1,5 +1,6 @@
 class IRepository{
-       
+     
+    //configuro respositorio que asegura que cualquier clase que implemente interfaz, tenga estos metodos
     obtenerPorId(id){
     throw new Error("Metodo 'obtenerPoId()' no implementado");
     }    

@@ -1,3 +1,5 @@
+
+//cofiguro la funcion  de representacion de datos
 export function renderizarSuperheroe(superheroe){
     return {
         //id: superheroe.id,
