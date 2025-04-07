@@ -4,7 +4,6 @@ import express from "express";
 //configuro rutas necesarias para cada operacion del controlador. Se definen los 'endpoints' y el mapeo a cada controlador
 
 import{
-
     obtenerTodosSuperheroesController,
     buscarSuperheroesPorAtributoController,
     obtenerSuperheroesMayoresDe30Controller,

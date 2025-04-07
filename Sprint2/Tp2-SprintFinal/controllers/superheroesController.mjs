@@ -43,7 +43,7 @@ export async function buscarSuperheroesPorAtributoController(req, res){
 }
 
 export async function obtenerSuperheroesMayoresDe30Controller(req, res){
-    try{
+    /*try{
         const superheroes = await obtenerSuperheroesMayoresDe30();
         if(superheroes.length === 0){
             res.status(404).send({mensaje: "No se encontraron superheroes mayores a 30"});
@@ -52,6 +52,9 @@ export async function obtenerSuperheroesMayoresDe30Controller(req, res){
         res.status(200).json(superheroesFormateados);
     }catch (error) {
         res.status(500).send({mensaje:"Erro al obtener superheores mayores de 30", error:error.message});
-    }
+    }*/
+
+        const superheroe = await obtenerSuperheroesMayoresDe30(); //falto el await. Por eso daba error en mayores-30
+        res.send(renderizarListaSuperheroes(superheroe));
     
 }
