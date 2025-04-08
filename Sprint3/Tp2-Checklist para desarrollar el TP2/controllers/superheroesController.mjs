@@ -28,7 +28,7 @@ export async function obtenerTodosSuperheroesController(req, res){
  }
  
 
-export async function buscarSuperheroesPorAtributoController(req, res){
+/*export async function buscarSuperheroesPorAtributoController(req, res){
     try{
         const { atributo, valor } = req.params;
         const superheroes = await buscarSuperheroesPorAtributo(atributo, valor);
@@ -40,10 +40,30 @@ export async function buscarSuperheroesPorAtributoController(req, res){
         }catch{
             res.status(500).send({mensaje: "Error al buscar los superheroes", error:error.message});
         }
+}*/
+
+export async function buscarSuperheroesPorAtributoController(req, res){
+    const {atributo, valor} = req.params;
+    const superheroe = await buscarSuperheroesPorAtributo(atributo, valor);
+    if(superheroe.length > 0){
+        res.send(renderizarListaSuperheroes(superheroe));
+    }else{
+        res.status(404).send({mesaje: "No se encontraron superheroes con ese atributo"});
+    }
 }
 
-export async function obtenerSuperheroesMayoresDe30Controller(req, res){
-    try{
+
+export const obtenerSuperheroesMayoresDe30Controller = async (req, res) => {
+    const superheroes = await obtenerSuperheroesMayoresDe30();
+    if(superheroes){
+        res.send(renderizarListaSuperheroes(superheroes));
+    } else {
+        res.status(404).send({mensaje: "superheros no encontrados"});
+    }
+}
+
+//export async function obtenerSuperheroesMayoresDe30Controller(req, res){
+    /*try{
         const superheroes = await obtenerSuperheroesMayoresDe30();
         if(superheroes.length === 0){
             res.status(404).send({mensaje: "No se encontraron superheroes mayores a 30"});
@@ -52,8 +72,10 @@ export async function obtenerSuperheroesMayoresDe30Controller(req, res){
         res.status(200).json(superheroesFormateados);
     }catch (error) {
         res.status(500).send({mensaje:"Erro al obtener superheores mayores de 30", error:error.message});
-    }   
-}
+    } */
+/*    const superheroe = await obtenerSuperheroesMayoresDe30(); //falto el await. Por eso daba error en mayores-30
+    res.send(renderizarListaSuperheroes(superheroe));  
+}*/
 
 export const nuevoSuperHeroeController = async (req, res) => {
     try {

@@ -8,7 +8,7 @@ const superheroSchema = new mongoose.Schema({
     nombreReal: { type: String, required: true },
     edad: { type: Number, min: 0 },
     planetaOrigen: { type: String, default: 'Desconocido' },
-    debilidad: String,
+    debilidad: [String],
     poderes: [String],
     aliados: [String],
     enemigos: [String],

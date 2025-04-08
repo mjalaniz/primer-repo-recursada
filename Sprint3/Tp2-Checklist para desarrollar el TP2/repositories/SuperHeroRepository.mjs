@@ -20,12 +20,58 @@ class SuperHeroRepository extends IRepository {
         return await SuperHero.find({});
     }
        
-    async buscarPorAtributo(atributo, valor) { //busqueda por algun atributo y valor
+    /*async buscarPorAtributo(atributo, valor) { //busqueda por algun atributo y valor
         return await SuperHero.find({[atributo]: valor});
+    }*/
+    
+    async buscarPorAtributo(atributo, valor) {
+        try{
+          if(atributo!='edad'){
+            const query = {[atributo]: new RegExp(valor, 'i')};
+            return await SuperHero.find(query);
+          }else{
+            const query = {[atributo]: valor};
+            return await SuperHero.find(query);
+          }
+        }catch(error){
+          console.log('Error al obtener heroes: ', error);
+          throw error;
+        }
+   
     }
 
-    async obtenerMayoresDe30(){ //trae los mayores a 30
-        return await SuperHero.find({edad: {$gt:30}});
+    
+   /* async obtenerMayoresDe30(){ //trae los mayores a 30
+        //return await SuperHero.find({edad: {$gt:30}});
+                try {
+                    return await SuperHero.find({
+                      edad: { $gt: 30 }, // Filtra por edad
+                      planetaOrigen: 'Tierra', // También filtra por planeta de origen
+                      /*$and: [             
+                        { poderes: { $exists: true, $type: "array" } }, // Verifica que "poderes" sea un arreglo
+                                           { $expr: { $gte: [{ $size: "$poderes" }, 2] } } // Condición de tamaño mínimo
+                       ]*/
+                    /*});
+                  } catch (error) {
+                    console.error('Error al obtener superhéroes mayores de 30:', error);
+                    throw error;
+                  }
+    }*/
+
+    async  obtenerMayoresDe30() {
+        try {
+            return await SuperHero.find({
+                edad: { $gt: 30 },
+                planetaOrigen:{ $eq:'Tierra'}, 
+                $and:[ {poderes: { $exists: true, $type: 'array' }}, {$expr: { $gte: [{ $size: "$poderes" }, 2] }} ]
+            });
+
+        } catch (error) {
+            
+            console.error('Error al obtener los héroes:', error);
+            throw error; // Re-lanzamos el error para que pueda ser manejado fuera si es necesario
+        }
+    
     }
 
     async nuevoSuperHeroe(datosSuperHeroe){
