@@ -24,6 +24,6 @@ router.get('/heroes/:id', obtenerSuperheroePorIdController);
 router.post('/heroes/nuevo', validarSuperHeroe, handleValidationErrors, nuevoSuperHeroeController);
 router.put('/heroes/actualizar/:id', validarSuperHeroe, handleValidationErrors, actualizarSuperHeroeController);
 router.delete('/heroes/borrarheroe-id/:id', borrarSuperHeroeIdController);
-router.delete('/heroes/borrarheroe-nombre/:nombreSuperheroe', borrarSuperheroePorNombreController);
+router.delete('/heroes/borrarheroe-nombre/:nombresuperheroe', borrarSuperheroePorNombreController);
 
 export default router;

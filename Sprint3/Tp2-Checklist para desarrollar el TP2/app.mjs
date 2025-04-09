@@ -6,7 +6,7 @@ import superHeroRoutes from './routes/superHeroRoutes.mjs'
 //import { obtenerSuperheroePorIdController, buscarSuperheroesPorAtributoController, obtenerSuperheroesMayoresDe30Controller, obtenerTodosSuperheroes } from './controllers/superheroesController.mjs';
 
 const app = express(); //Inicializamos una aplicacion de Express
-const PORT = process.env.PORT || 3000; //Definimos el puerto en el que escuchara el servidor
+const PORT = process.env.PORT || 3100; //Definimos el puerto en el que escuchara el servidor
 
 //middleware para permitir el manejo de solicitudes con cuerpo en formato JSON
 app.use(express.json());

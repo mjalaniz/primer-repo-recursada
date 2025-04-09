@@ -88,11 +88,12 @@ class SuperHeroRepository extends IRepository {
     }
 
     async borrarPorId(id) {
-        return await SuperHero.findByIdAndDelete(id);
+        return await SuperHero.deleteOne({ _id:id });
     }
    
-    async borrarPorNombre(nombreSuperHeroe) {
-        return await SuperHero.findOneAndDelete({ nombreSuperheroe: nombreSuperHeroe });
+    async borrarPorNombre(nombreReal) {
+        //return await SuperHero.findOneAndDelete({ nombreSuperheroe: nombreSuperHeroe });
+        return await SuperHero.findOneAndDelete({nombreReal: new RegExp(nombreReal, 'i') });
     }
 
 }

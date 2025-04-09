@@ -24,6 +24,14 @@ class IRepository{
     actualizarSuperHeroe(id, datosActualizados){
         throw new Error("Método 'actualizarsuperHero(id, datosActualizados)' no implementado");
     }
+
+    borrarPorId(id){
+        throw new Error("Método 'borrarPorId(id)' no implementado");
+    }
+
+    borrarPorNombre(nombreReal){
+        throw new Error("Método 'borrarPorNombre(nombreReal)' no implementado");
+    }
 }
 
 export default IRepository;
