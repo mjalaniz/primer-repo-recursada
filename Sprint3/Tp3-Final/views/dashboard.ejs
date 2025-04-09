@@ -1,0 +1,21 @@
+
+<body>
+    <h1>Superheroes</h1>
+    <table>
+        <thead>
+            <th>Nombre Superheroes</th>
+            <ul>
+                <% superheroes.forEach( superhero => { %>
+                    <tr>
+                        <td><%= superhero.nombreSuperHeroe %></td>
+                        <td><%= superhero.nombreReal %></td>
+                        <td><%= superhero.edad %></td>
+                        <td><%= superhero.planetaOrigen %></td>
+                        <td><%= superhero.poderes %></td>
+                    </tr>
+                <% }); %>    
+            </ul>
+            
+        </thead>
+    </table>
+</body>

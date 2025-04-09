@@ -1,6 +1,8 @@
 import express from 'express'; //importamos el framework Express
 import { connectDB } from './config/dbConfig.mjs';
-import superHeroRoutes from './routes/superHeroRoutes.mjs'
+import superHeroRoutes from './routes/superHeroRoutes.mjs';
+import path from 'path';
+import expressEjsLayouts from 'express-ejs-layouts';
 
 //Importamos los controladores
 //import { obtenerSuperheroePorIdController, buscarSuperheroesPorAtributoController, obtenerSuperheroesMayoresDe30Controller, obtenerTodosSuperheroes } from './controllers/superheroesController.mjs';
@@ -15,6 +17,14 @@ app.use(express.json());
 connectDB(); 
 
 //configuracion de rutas
+
+app.set('views', path.resolve('views'));//directorio de las vistas
+app.set('view engine', 'ejs');
+app.use(expressEjsLayouts);
+app.set('layout', 'layout');
+app.use(express.static(path.resolve('public')));//servir archivos estáticos
+app.use(express.json());
+app.use(express.urlencoded({extend: true}));
 app.use('/api', superHeroRoutes);
 
 //Manejo de errores para rutas no encontradas

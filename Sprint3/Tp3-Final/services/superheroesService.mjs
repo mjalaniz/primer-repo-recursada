@@ -2,8 +2,8 @@
 import SuperHeroRepository from '../repositories/SuperHeroRepository.mjs';
 
 //se configura la logica del negocio,usando los metodos del repositorio.
-export async function obtenerSuperheroePorId($id){
-    return await SuperHeroRepository.obtenerPorId($id);
+export async function obtenerSuperheroePorId(id){
+    return await SuperHeroRepository.obtenerPorId(id);
 }
 
 export async function obtenerTodosLosSuperheroes(){

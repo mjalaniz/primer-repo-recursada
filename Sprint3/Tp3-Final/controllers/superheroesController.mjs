@@ -11,7 +11,7 @@ export async function obtenerSuperheroePorIdController(req, res){
         res.send(renderizarSuperheroe(superheroe));
     }
     else{
-        res.status(404).send({mensaje: "Superheroe no encontrado"});
+        res.status(404).send({mensaje: "SUPERHEROE no encontrado"});
     }
 }
 
@@ -27,6 +27,18 @@ export async function obtenerTodosSuperheroesController(req, res){
     }
  }
  
+ export async function renderizarTodosLosSuperHeroesController(req, res){
+    try {
+        const superheroes = await obtenerTodosLosSuperheroes();
+        if(superheroes && superheroes.length > 0){
+            
+            res.render('dashboard',{superheroes});
+           
+        } 
+    } catch (error) {
+        res.status(500).send({mensaje: 'Error al obtener todos los superhéroes', error: error.message});
+    }
+};
 
 export async function buscarSuperheroesPorAtributoController(req, res){
     try{
