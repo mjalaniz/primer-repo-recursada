@@ -21,3 +21,10 @@ export const renderizarListaSuperheroes = (superheroes) => {
     return superheroes.map(superheroe => renderizarSuperheroe(superheroe));
 
 }
+
+export const renderizarMensajeDeOperacion = (mensaje, detalle = null) => {
+    return {
+        mensaje, 
+        detalle
+    }
+}

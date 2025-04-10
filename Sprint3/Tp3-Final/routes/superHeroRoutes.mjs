@@ -13,13 +13,17 @@ import{
     actualizarSuperHeroeController,
     borrarSuperHeroeIdController,
     borrarSuperheroePorNombreController,
-    renderizarTodosLosSuperHeroesController
+    renderizarTodosLosSuperHeroesController,
+    renderizarQuinesSomosController,
+    renderizarAddSuperheroController
 } from '../controllers/superheroesController.mjs'
 
 const router = express.Router();
 
 
 router.get('/heroes/dashboard', renderizarTodosLosSuperHeroesController);
+router.get('/heroes/quienessomos', renderizarQuinesSomosController);
+router.get('/heroes/agregar', renderizarAddSuperheroController);
 
 router.get('/heroes', obtenerTodosSuperheroesController);
 router.get('/heroes/mayores-de-30', obtenerSuperheroesMayoresDe30Controller);

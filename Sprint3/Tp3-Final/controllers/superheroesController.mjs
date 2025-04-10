@@ -1,6 +1,14 @@
 
-import { obtenerTodosLosSuperheroes, obtenerSuperheroePorId, buscarSuperheroesPorAtributo, obtenerSuperheroesMayoresDe30, nuevoSuperHeroe, actualizarSuperHeroe, borrarSuperheroePorId, borrarSuperheroePorNombre  } from '../services/superheroesService.mjs';
+import { obtenerTodosLosSuperheroes, obtenerSuperheroePorId, 
+    buscarSuperheroesPorAtributo, 
+    obtenerSuperheroesMayoresDe30, 
+    nuevoSuperHeroe, 
+    actualizarSuperHeroe, 
+    borrarSuperheroePorId,
+    borrarSuperheroePorNombre  } from '../services/superheroesService.mjs';
 import { renderizarSuperheroe, renderizarListaSuperheroes } from '../views/responseView.mjs';
+
+import { navBarLinks } from "../config/navbarLinks.mjs";
 
 //configuro controlador para gestionar solicitudes HTTP
 export async function obtenerSuperheroePorIdController(req, res){
@@ -15,6 +23,31 @@ export async function obtenerSuperheroePorIdController(req, res){
     }
 }
 
+export const renderizarQuinesSomosController = async (req, res) => {
+    res.render(
+        'quienessomoslayout', 
+        {
+            layout: 'layout',
+            navbarLinks: navBarLinks,
+            title: 'Quienes somos', 
+            message: req.query.message || '', 
+        }   
+    );
+};
+
+export const renderizarAddSuperheroController = (req, res) => {
+    //res.render('addsuperhero', {title: 'Agregar superhéroe'});
+
+    res.render(
+        'addSuperhero', 
+        {
+            layout: 'layout',
+            title: 'Agregar superheroe', 
+            navbarLinks: navBarLinks,
+            errors: [], 
+            message: req.query.message || ''
+        });
+}
 export async function obtenerTodosSuperheroesController(req, res){
     try{
      
