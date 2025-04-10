@@ -35,6 +35,18 @@ export const renderizarQuinesSomosController = async (req, res) => {
     );
 };
 
+export const renderizarInicioController = async (req, res) => {
+    res.render(
+        'indexlayout', 
+        {
+            layout: 'layout',
+            navbarLinks: navBarLinks,
+            title: 'Inicio', 
+            message: req.query.message || '', 
+        }   
+    );
+};
+
 export const renderizarAddSuperheroController = (req, res) => {
     //res.render('addsuperhero', {title: 'Agregar superhéroe'});
 
@@ -65,7 +77,12 @@ export async function obtenerTodosSuperheroesController(req, res){
         const superheroes = await obtenerTodosLosSuperheroes();
         if(superheroes && superheroes.length > 0){
             
-            res.render('dashboard',{superheroes});
+            res.render('dashboard',{
+                layout: 'layout',
+                navbarLinks: navBarLinks,
+                title: 'Todos los superheroes',
+                message: req.query.message || '', 
+                superheroes});
            
         } 
     } catch (error) {

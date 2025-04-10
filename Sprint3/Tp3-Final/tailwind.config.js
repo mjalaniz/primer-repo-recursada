@@ -7,6 +7,12 @@ module.exports = {
   theme: {
     extend: {},
   },
+  safelist: [
+    'btn',
+    'btn-sm',
+    'btn-danger',
+    'btn-warning', // Agrega todas las clases que quieres incluir
+  ],
   plugins: [],
 }
 

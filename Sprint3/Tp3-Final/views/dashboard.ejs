@@ -1,39 +1,18 @@
-<!--body>
-    <h1>Superheroes</h1>
-    <table>
-        <thead>
-            <th>Nombre Superheroes</th>
-            <ul>
-                <% superheroes.forEach( superhero => { %>
-                    <tr>
-                        <td><%= superhero.nombreSuperHeroe %></td>
-                        <td><%= superhero.nombreReal %></td>
-                        <td><%= superhero.edad %></td>
-                        <td><%= superhero.planetaOrigen %></td>
-                        <td><%= superhero.poderes %></td>
-                    </tr>
-                <% }); %>    
-            </ul>
-            
-        </thead>
-    </table>
-</body-->
-
 <main class="main-container">
     <div>
         <a href="/api/heroes/agregar">
             <button class="btn btn-primary-dark btn-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                <!--svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                     <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
-                </svg>                  
-                <span>nuevo superhéroe</span>
+                </svg-->                  
+                <span>Nuevo Superhéroe</span>
             </button>
         </a>
     </div>
     
     <% if (superheroes && superheroes.length > 0) { %>
-    <section class="section-table">
-        <table class="table-w-full">
+    <section class="section-table  ">
+        <table class="table-w-full  ">
             <thead>
                 <th>Nombre del Superhéroe</th>
                 <th>Nombre real</th>
