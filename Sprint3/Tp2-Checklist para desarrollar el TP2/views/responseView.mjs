@@ -2,7 +2,7 @@
 //cofiguro la funcion  de representacion de datos
 export function renderizarSuperheroe(superheroe){
     return {
-        "id": superheroe.id,
+        //"id": superheroe.id,
         Nombre : superheroe.nombreSuperHeroe,
         "Nombre Real" : superheroe.nombreReal,
         Edad : superheroe.edad,

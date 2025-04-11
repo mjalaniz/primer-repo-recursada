@@ -17,13 +17,13 @@ import{
 
 const router = express.Router();
 
-router.get('/heroes', obtenerTodosSuperheroesController);
-router.get('/heroes/mayores-de-30', obtenerSuperheroesMayoresDe30Controller);
-router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroesPorAtributoController);
-router.get('/heroes/:id', obtenerSuperheroePorIdController);
-router.post('/heroes/nuevo', validarSuperHeroe, handleValidationErrors, nuevoSuperHeroeController);
-router.put('/heroes/actualizar/:id', validarSuperHeroe, handleValidationErrors, actualizarSuperHeroeController);
-router.delete('/heroes/borrarheroe-id/:id', borrarSuperHeroeIdController);
+router.get('/heroes', obtenerTodosSuperheroesController);//controlado
+router.get('/heroes/mayores-de-30', obtenerSuperheroesMayoresDe30Controller);//controlado
+router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroesPorAtributoController);//controlado
+router.get('/heroes/:id', obtenerSuperheroePorIdController);//controlado
+router.post('/heroes/nuevo', validarSuperHeroe, handleValidationErrors, nuevoSuperHeroeController);//controlado
+router.put('/heroes/actualizar/:id', validarSuperHeroe, handleValidationErrors, actualizarSuperHeroeController);//controlado
+router.delete('/heroes/borrarheroe-id/:id', borrarSuperHeroeIdController);//controlado
 router.delete('/heroes/borrarheroe-nombre/:nombresuperheroe', borrarSuperheroePorNombreController);
 
 export default router;

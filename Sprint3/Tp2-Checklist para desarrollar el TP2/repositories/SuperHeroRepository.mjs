@@ -6,7 +6,8 @@ class SuperHeroRepository extends IRepository {
   
     async obtenerPorId(id){ //buscar por el ID , agregar en el Modelo el atributo id y en el responseView(renderizado)
 
-        const superHero = await SuperHero.findOne({ id: Number(id) });   
+        //const superHero = await SuperHero.findOne({ id: Number(id) });  
+        const superHero = await SuperHero.findById(id);   
     
     
         if (!superHero) {
@@ -81,19 +82,20 @@ class SuperHeroRepository extends IRepository {
 
     async actualizarSuperHeroe(id, datosActualizados){
         return await SuperHero.updateOne(
-            {id: id}, datosActualizados,
+            {_id: id}, datosActualizados,
             {new: true}
             //{$set: datosActualizados}
         );
     }
 
     async borrarPorId(id) {
-        return await SuperHero.deleteOne({ _id:id });
+        return await SuperHero.deleteOne({_id:id});
+        
     }
    
     async borrarPorNombre(nombreReal) {
-        //return await SuperHero.findOneAndDelete({ nombreSuperheroe: nombreSuperHeroe });
-        return await SuperHero.findOneAndDelete({nombreReal: new RegExp(nombreReal, 'i') });
+        return await SuperHero.findOneAndDelete({ nombreReal: nombreReal });
+        //return await SuperHero.findOneAndDelete({nombreReal: new RegExp(nombreReal, 'i') });
     }
 
 }
