@@ -105,18 +105,19 @@ export async function borrarSuperHeroeIdController(req, res) {
 }
 
 export async function borrarSuperheroePorNombreController(req, res) {
-    const { nombreReal } = req.params; // Nombre del superhéroe que se quiere borrar
+    const { nombre } = req.params; // Nombre del superhéroe que se quiere borrar
 
-    console.log(nombreReal);
-    const resultado = await borrarSuperheroePorNombre(nombreReal);
+   // console.log(nombreReal);
+    const resultado = await borrarSuperheroePorNombre(nombre);
     if(resultado){
-        res.send(renderizarSuperheroe(resultado));
+        res.status(200).send({mensaje:'superheroe eliminado por Nombre'});
+        //res.send(renderizarSuperheroe(resultado));
         //res.send(renderizarMensajeDeOperacion("El superheroe ha sido eliminado", renderizarSuperheroe(resultado)));
     } else {
         res.status(404).send("Superheroes no encontrado");
         //res.status(404).send(renderizarMensajeDeOperacion("Superheroe no encontrado"));
     }
-
+}
     /*try {
         const superheroeBorrado = await borrarSuperheroePorNombre(nombreReal);
 
@@ -129,4 +130,3 @@ export async function borrarSuperheroePorNombreController(req, res) {
     } catch (error) {
         res.status(500).send({ mensaje: 'Error al borrar el superhéroe', error: error.message });
     }*/
-}
