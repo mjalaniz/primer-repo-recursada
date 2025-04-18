@@ -16,9 +16,9 @@ import{
     renderizarTodosLosSuperHeroesController,
     renderizarQuinesSomosController,
     renderizarAddSuperheroController,
-    renderizarEditSuperheroController,
+    //renderizarEditSuperheroController,
     renderizarInicioController, 
-    renderizarDeleteSuperHeroController
+    //renderizarDeleteSuperHeroController
 } from '../controllers/superheroesController.mjs'
 
 const router = express.Router();
