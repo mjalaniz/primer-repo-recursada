@@ -1,25 +1,34 @@
 <main class="main-container">
+    
     <div>
         <a href="/api/heroes/agregar">
             <button class="btn btn-primary-dark btn-sm">
-                <!--svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                    <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
-                </svg-->                  
-                <span>Nuevo Superhéroe</span>
+                                
+                <span>Nuevo superhéroe</span>
             </button>
         </a>
+        
     </div>
-    
+    <!-- Mostrar mensaje si existe -->
+    <% if (message) { %>
+    <div class="message">
+        <p><%= message %></p>
+    </div>
+    <% } %>     
     <% if (superheroes && superheroes.length > 0) { %>
-    <section class="section-table  ">
-        <table class="table-w-full  ">
+    <section class="section-table">
+        <table class="table-w-full">
             <thead>
-                <th>Nombre del Superhéroe</th>
-                <th>Nombre real</th>
+                <th>Nombre Superhéroe</th>
+                <th>Nombre Real</th>
                 <th>Edad</th>
                 <th>Planeta de origen</th>
-                <th colspan="2">Operaciones</th>
+                <th>Poderes</th>
+                <!--th>Debiliadad</th>
                 
+                <th>Aliados</th>
+                <th>Enemigos</th-->    
+                <th rowspan="2" colspan="2">Operaciones</th>
             </thead>
             <tbody>
                 <% superheroes.forEach( superhero => { %>
@@ -28,6 +37,11 @@
                         <td><%= superhero.nombreReal %></td>
                         <td><%= superhero.edad %></td>
                         <td><%= superhero.planetaOrigen %></td>
+                        <td><%= superhero.poderes %></td>
+                        <!--td><%= superhero.debilidad  %></td>
+                        
+                        <td><%= superhero.aliados %></td>
+                        <td><%= superhero.enemigos %></td-->
                         <td>
                             <a href="/api/heroes/<%= superhero._id %>/editar">
                                 <button class="btn btn-warning btn-xs">
@@ -48,7 +62,7 @@
                                     <span class="font-thin">Eliminar</span>
                                 </button>
                             </a>
-                    </td>
+                        </td>
                     </tr>
                 <% }); %>
             </tbody>

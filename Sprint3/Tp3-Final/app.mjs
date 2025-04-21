@@ -1,38 +1,44 @@
-import express from 'express'; //importamos el framework Express
+import express from 'express';
 import { connectDB } from './config/dbConfig.mjs';
-import superHeroRoutes from './routes/superHeroRoutes.mjs';
+//import superHeroRoutes from './routes/superHeroRoute.mjs';
+import router from './routes/superHeroRoute.mjs';
 import path from 'path';
 import expressEjsLayouts from 'express-ejs-layouts';
 
-//Importamos los controladores
-//import { obtenerSuperheroePorIdController, buscarSuperheroesPorAtributoController, obtenerSuperheroesMayoresDe30Controller, obtenerTodosSuperheroes } from './controllers/superheroesController.mjs';
-
 const app = express(); //Inicializamos una aplicacion de Express
-const PORT = process.env.PORT || 3000; //Definimos el puerto en el que escuchara el servidor
+const PORT = process.env.PORT || 3000; 
 
-//middleware para permitir el manejo de solicitudes con cuerpo en formato JSON
-app.use(express.json());
 
-//CONEXION A MondoDB
-connectDB(); 
-
-//configuracion de rutas
-
-app.set('views', path.resolve('views'));//directorio de las vistas
 app.set('view engine', 'ejs');
+app.set('views', path.resolve('views'));//directorio de las vistas
 app.use(expressEjsLayouts);
 app.set('layout', 'layout');
 app.use(express.static(path.resolve('public')));//servir archivos estáticos
 app.use(express.json());
 app.use(express.urlencoded({extend: true}));
-app.use('/api', superHeroRoutes);
+
+const loggerMiddleware =  (req, res, next) => {
+    console.log(`Request recibida: ${req.method} ${req.url}`);
+    next(); //pasa el control al siguiente middleware
+}
+//middleware para PARSEAR JSON
+
+//app.use(express.json());
+app.use(loggerMiddleware);
+
+//Conexion a MongoDB
+connectDB(); //Conectamos a la base de datos de MongoDB
+
+//Configracion de Rutas
+app.use('/api', router);
+
 
 //Manejo de errores para rutas no encontradas
-app.use((req, res) => {
-        res.status(404).send({ message: 'Ruta no encontrada' });
-});
+/*app.use((req, res, next) => {
+        res.status(404).send({mensaje:"Ruta no encontrada"});
+});*/
 
-//inicia el server
+//Iniciar el servidor
 app.listen(PORT, () => {
         console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
