@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>PAISES</title>
+</head>
+
+<body>
+    <nav class="bg-gray-200 bg-opacity-70 dark:bg-gray-950 dark:bg-opacity-70 p-4 w-full flex justify-between items-center">
+      <!-- Header -->
+      <header class="text-lg font-bold text-gray-600 dark:text-gray-100">
+          
+          <a href="/api/paises"><img class="h-auto max-w-lg rounded-lg" src="/images/logo-mundo.png" alt="image description"></a>
+
+      </header>
+    </nav>  
+
+    <%- body %>
+    <%- include('partials/footer.ejs') %>                                                                                                                  
+
+</body>
+<style>
+    body {
+        font-family: sans-serif;
+        margin: 2rem; /* Add some margin around the form */
+      }
+      
+      h1 {
+        text-align: center;
+        margin-bottom: 1rem; /* Add some space below the heading */
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 0.5rem; /* Add some space below labels */
+      }
+      
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; /* Ensure padding doesn't affect width */
+      }
+      
+      button[type="submit"] {
+        background-color: #4CAF50; /* Green color for submit button */
+        color: white;
+        padding: 0.75rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      button[type="submit"]:hover {
+        background-color: #3e8e41; /* Darken green on hover */
+      }
+</style> 
+</html>

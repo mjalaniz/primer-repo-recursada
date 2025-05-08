@@ -1,0 +1,43 @@
+<main class="main-container">
+    <section class="">
+    
+        <h1>Agregar Nuevo País</h1>
+
+     <!-- Mostrar los errores -->
+     <% if (errors.length > 0) { %>
+        <ul style="color: red;">
+            <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+ <form  action="/api/agregar-pais" method="POST" class="form-dark">
+
+    <label for="official">Nombre Oficial:</label>
+    <input type="text" id="official" name="official" value="<%= datosPais.official %>" required>
+    
+    <label for="capital">Capital:</label>
+    <input type="text" id="capital" name="capital" value="<%= datosPais.capital %>" required>
+    
+    <label for="area">Área:</label>
+    <input type="number" id="area" name="area" step="any" value="<%= datosPais.area %>" required>
+    
+    <label for="population">Población:</label>
+    <input type="number" id="population" name="population" step="any" value="<%= datosPais.population %>" required>
+        
+    <label for="borders">Fronteras:</label>
+    <input type="text" id="borders" name="borders" value="<%= datosPais.borders %>">
+        
+    <div class="flex justify-end space-x-4 mt-4">
+        <a href="/"> 
+            <button type="button" class="btn btn-danger btn-sm" >Cancelar Pais</button>
+        </a>
+        <div class="space-y-4">
+            <button type="submit" class="btn btn-primary btn-sm" style="background-color: #1006d3;" >Agregar Pais</button>
+        </div>
+    </div>
+</form>
+
+</section>
+</main>

@@ -6,7 +6,7 @@ import path from 'path';
 import expressEjsLayouts from 'express-ejs-layouts';
 
 const app = express(); //Inicializamos una aplicacion de Express
-const PORT = process.env.PORT || 3000; 
+const PORT = process.env.PORT || 3200; 
 
 
 app.set('view engine', 'ejs');
